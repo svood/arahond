@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import withLayout from '../components/layout'
 import { Container, Button, FormInput } from "shards-react";
 import { addJoober } from '../reducers/api'
+import Router from 'next/router'
 
 class jobberPage extends React.Component {
     constructor(props) {
@@ -39,7 +40,10 @@ class jobberPage extends React.Component {
 
         const res = await addJoober(data);
 
-        console.log(res)
+        if(res.data.objectId) {
+            Router.push(`/jooberinfo?id=${res.data.objectId}`)
+        }
+        console.log(res.data.objectId)
         
 
     }

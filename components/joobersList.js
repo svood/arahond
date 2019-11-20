@@ -38,8 +38,8 @@ export default function joobersList() {
                                     <Td>{item.name}</Td>
                                     <Td >{item.last_name}</Td>
                                     <Td >{item.patronymics}</Td>
-                                    <Td >{item.birthday.iso}</Td>
-                                    <Td ><img style={{ width: '100px' }} src={item.photo.url} /></Td>
+                                    <Td >{item.birthday}</Td>
+                                    <Td ><img style={{ width: '100px' }} src={(item.photo)?item.photo.url:"../static/male-user-icon-vector-8865469.jpg"} /></Td>
                                     <Td>
                                         <Link href={`/jooberinfo?id=${item.objectId}`}>
                                             <a>Коментарии</a>

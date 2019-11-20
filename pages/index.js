@@ -18,21 +18,21 @@ const IndexPage = () => {
   console.log(useSelector(state => state.data))
 
   return (
-   
-      <Container >
-        <Row>
-          <Header />
-        </Row>
-        <Row>
-          <FindJobber />
-        </Row>
-        <Row>
-          <Joobersist />
-        </Row>
+
+    <Container >
+      <Row>
+        <Header />
+      </Row>
+      <Row>
+        <FindJobber />
+      </Row>
+      <Row>
+        <Joobersist />
+      </Row>
 
 
-      </Container>
-   
+    </Container>
+
   )
 }
 

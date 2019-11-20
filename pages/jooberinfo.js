@@ -1,24 +1,41 @@
-import React from 'react'
-import { withRedux } from '../lib/redux'
+import React from 'react';
+import { withRedux } from '../lib/redux';
 import { useRouter } from 'next/router';
 import withLayout from '../components/layout'
+import { getJooberData } from '../reducers/api'
+import { Container, Button, FormInput } from "shards-react";
 
 
-const jobberPage = () => {
-    const router = useRouter()
 
-    return (
-        <>
-            <h1>jobber Page</h1>
-            <h1>{router.query.id}</h1>
-        </>
-    )
+class jobberPage extends React.Component {
+    
+    
+    static async getInitialProps (query) {
+  
+     console.log("Asdy",query.query.id)
+       
+    };
+
+
+    componentDidMount() {
+      
+
+    }
+
+    router =  () => {
+        const router = useRouter();
+        return router
+    }
+
+
+    render() {
+        return (
+            <Container>
+                <h1>Add jobber Page</h1>
+                {/* <div>{console.log(this.props)}</div> */}
+            </Container>
+        )
+    }
 }
 
-jobberPage.getInitialProps = async ({ reduxStore }) => {
-
-
-    return {}
-}
-
-export default withRedux(withLayout(jobberPage))
+export default withRedux(jobberPage)

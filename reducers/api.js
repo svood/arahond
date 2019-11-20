@@ -84,7 +84,26 @@ async function findJooberbyPhone(phone) {
     })
 
 }
+async function getJooberData(id) {
 
+    var headers = {
+        'Content-Type': 'application/x-www-form-urlencoded"',
+        'X-Parse-Application-Id': 'TlGsa7yDm8uz0HC7RxyyGrIS6rOADTkmBWQaQ4gO',
+        'X-Parse-REST-API-Key': 'u08Z7PkPWw20wQKgQWs7TcIaWgETOAKarBQRsIO4',
+    }
+
+    //const params = new URLSearchParams();
+
+    //params.append('where', `{"phone":"${phone}"}`);
+
+    return axios({
+        method: 'get',
+        url: `https://pg-app-t3dp88a70e2dh1qzeelk6y2h7d0dgr.scalabl.cloud/1/classes/Jobbers/${id}`,
+        headers: headers,
+        //params
+    })
+
+}
 async function addJoober(data) {
 
     var headers = {
@@ -113,4 +132,4 @@ async function addJoober(data) {
     })
 
 }
-export { login, getAllJobers, findJooberbyInn, findJooberbyPhone, addJoober }
+export { login, getAllJobers, findJooberbyInn, findJooberbyPhone, addJoober, getJooberData }
