@@ -117,8 +117,8 @@ async function addJoober(data) {
     }
 
     const params = new URLSearchParams();
-    params.append('inn', '1');
-    params.append('phone', 97144);
+    params.append('inn', data.inn);
+    params.append('phone', data.phone);
     params.append('name', data.name);
     params.append('last_name', data.last_name);
     params.append('patronymics', data.patronymics);
@@ -128,7 +128,7 @@ async function addJoober(data) {
         method: 'post',
         url: 'https://pg-app-t3dp88a70e2dh1qzeelk6y2h7d0dgr.scalabl.cloud/1/classes/Jobbers',
         headers: headers,
-        data:params
+        data: params
     })
 
 }
