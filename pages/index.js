@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { withRedux } from '../lib/redux'
 import { getAllJobers } from '../reducers/api';
 import "../style.css"
-
+import { BannerHome } from '../components/baners'
 
 
 import Joobersist from '../components/joobersList';
@@ -20,17 +20,19 @@ const IndexPage = () => {
   return (
 
     <Container >
-      <Row>
-        <Header />
-      </Row>
+      <Header />
+
       <Row>
         <FindJobber />
       </Row>
       <Row>
+        <Container>
+          <BannerHome />
+        </Container>
+      </Row>
+      <Row>
         <Joobersist />
       </Row>
-
-
     </Container>
 
   )

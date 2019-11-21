@@ -1,10 +1,12 @@
 import React from 'react'
 import { withRedux } from '../lib/redux'
 import { useRouter } from 'next/router';
-import withLayout from '../components/layout'
 import { Container, Button, FormInput } from "shards-react";
 import { addJoober } from '../reducers/api'
 import Router from 'next/router'
+import Header from '../components/header'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css"
 
 class jobberPage extends React.Component {
     constructor(props) {
@@ -40,11 +42,11 @@ class jobberPage extends React.Component {
 
         const res = await addJoober(data);
 
-        if(res.data.objectId) {
+        if (res.data.objectId) {
             Router.push(`/jooberinfo?id=${res.data.objectId}`)
         }
         console.log(res.data.objectId)
-        
+
 
     }
 
@@ -98,22 +100,24 @@ class jobberPage extends React.Component {
     render() {
         const { modal } = this.state;
         return (
-            <Container>
-                <>
-                    <h1>Add jobber Page</h1>
 
+            <>
+
+                <Container>
+                    <Header />
+                    <h1>Add jobber Page</h1>
                     <FormInput onChange={(e) => this.handleField('inn', e.target.value)} className="addJoberInput" placeholder="Инн" />
                     <FormInput onChange={(e) => this.handleField('phone', e.target.value)} className="addJoberInput" placeholder="телефон" />
                     <FormInput onChange={(e) => this.handleField('name', e.target.value)} className="addJoberInput" placeholder="Имя" />
                     <FormInput onChange={(e) => this.handleField('last_name', e.target.value)} className="addJoberInput" placeholder="Фамилия" />
                     <FormInput onChange={(e) => this.handleField('patronymics', e.target.value)} className="addJoberInput" placeholder="Отчество" />
                     <FormInput onChange={(e) => this.handleField('birthday', e.target.value)} className="addJoberInput" placeholder="Дата рождения" />
-
                     <Button theme="success" onClick={this.ApiAddJoober}>Success</Button>
-                </>
-            </Container>
+                </Container>
+            </>
+
         )
     }
 }
 
-export default withRedux(withLayout(jobberPage))
+export default withRedux(jobberPage)

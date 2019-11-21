@@ -8,6 +8,11 @@ import { Container, Row, Button, FormInput } from "shards-react";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import Header from '../components/header'
 import AddComment from '../components/addcomment'
+import Rating from 'react-rating'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css"
+
+
 class jobberPage extends React.Component {
 
     constructor(props) {
@@ -50,12 +55,26 @@ class jobberPage extends React.Component {
 
     render() {
         const { data } = this.props
+        const count_ratting = () => {
+            let count = 0;
+            let total = 0;
+
+            data.comments.map((item, i) => (
+                count += item.ratting,
+                total += 1
+            ))
+            return <Rating
+                initialRating={count / total}
+                readonly
+            />;
+        }
         return (
             <>
                 <Header />
                 <Container>
 
                     <Row>
+                   
                         <h1>Отзывы: {data.name} {data.last_name}</h1>
                     </Row>
                     <Row>
@@ -84,6 +103,12 @@ class jobberPage extends React.Component {
                                     <Td >Дата Рождения</Td>
                                     <Td >{data.birthday}</Td>
                                 </Tr>
+                                <Tr>
+                                    <Td >Дата Рождения</Td>
+                                    <Td >{count_ratting()}</Td>
+                                </Tr>
+
+
                             </Tbody>
                         </Table>
                     </Row>
@@ -114,7 +139,7 @@ class jobberPage extends React.Component {
                     </Row>
                     <Row>
 
-                        <AddComment/>
+                        <AddComment />
                     </Row>
                 </Container>
             </>

@@ -76,18 +76,18 @@ class findJobber extends React.Component {
         const { modal } = this.state;
         return (
             <Container className="findJobber">
-                <Row >
-                    <Col sm="12" md="12" lg="12">
-                        <h1>Find Jobber</h1>
-                    </Col>
-                </Row>
-                <Row>
 
+                {/* <Row >
+                    <Col sm="12" md="12" lg="12">
+                        <div className="findJoobreTitle">Find Jobber</div>
+                    </Col>
+                </Row> */}
+                <Row>
                     <Col sm="12" md="6" lg="6">
                         <InputGroup>
                             <FormInput onChange={(e) => this.toggleInn(e.target.value)} id="inn" placeholder="Поиск по инн" />
                             <InputGroupAddon type="append">
-                                <Button onClick={(e) => this.FindByInn()} theme="secondary">Найти</Button>
+                                <Button onClick={(e) => this.FindByInn()} className="mainColorText">Найти</Button>
                             </InputGroupAddon>
                         </InputGroup>
                     </Col>
