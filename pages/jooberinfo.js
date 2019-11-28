@@ -4,14 +4,14 @@ import { useRouter } from 'next/router';
 import withLayout from '../components/layout'
 import { getJooberData } from '../reducers/api'
 import { getComments } from '../reducers/commentsApi'
-import { Container, Row, Button, FormInput } from "shards-react";
+import { Container, Row, Button, FormInput, Col } from "shards-react";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import Header from '../components/header'
 import AddComment from '../components/addcomment'
 import Rating from 'react-rating'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css"
-
+import "../style.css"
 
 class jobberPage extends React.Component {
 
@@ -27,6 +27,7 @@ class jobberPage extends React.Component {
         console.log(res.data)
         return {
             data: {
+                id: query.query.id,
                 inn: res.data.inn,
                 name: res.data.name,
                 last_name: res.data.last_name,
@@ -69,80 +70,53 @@ class jobberPage extends React.Component {
             />;
         }
         return (
-            <>
+            <Container>
                 <Header />
                 <Container>
 
                     <Row>
+                        <div className="userInfoTitle">Отзывы: {data.name} {data.last_name}</div>
+                    </Row>
+                    <Row className="userInfoMain">
+
+                        <Col className="userinfoPhoto"><img style={{ width: '100%' }} src={(data.photo) ? data.photo.url : "../static/male-user-icon-vector-8865469.jpg"} /></Col>
+                        <Col>
+                           <Row center>{data.last_name} {data.name} {data.patronymics}</Row> 
+                           <Row>Дата рождения: {new Date(data.birthday).toLocaleDateString("ru-RU") }</Row>
+                           <Row>Всего комментариев: { (data.comments) ? data.comments.length:null}</Row>
+                           <Row>Рейтинг: {count_ratting()}</Row>
+                        </Col>
+                    </Row>
+
+                    <Row className="addNewComment">
+                        <AddComment id={data.id} />
+                    </Row>
+
+                
+
+                        {
+                            (data.comments) ? data.comments.map((item, i) => (
+                                <Container className="commentsBlock">
+                                    <Row className="commentUserInfo">
+                                        <Col>{new Date(item.createdAt).toLocaleDateString("ru-RU")}</Col>
+                                        <Col className="userCommentRaiting">
+                                            <Rating
+                                                initialRating={item.ratting}
+                                                readonly
+                                            />
+                                        </Col>
+                                    </Row>
+                                    <Row className="commentInfo">
+                                        {item.comment}
+                                    </Row>
+                                </Container>
+                            )) : null
+                        }
                    
-                        <h1>Отзывы: {data.name} {data.last_name}</h1>
-                    </Row>
-                    <Row>
-                        <Table>
-                            <Tbody>
-                                <Tr>
-                                    <Td ><img style={{ width: '100px' }} src={(data.photo) ? data.photo.url : "../static/male-user-icon-vector-8865469.jpg"} /></Td>
-                                </Tr>
-                                <Tr>
-                                    <Td >ИНН</Td>
-                                    <Td >{data.inn}</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td >Имя</Td>
-                                    <Td>{data.name}</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td >Фамилия</Td>
-                                    <Td >{data.last_name}</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td >Отчество</Td>
-                                    <Td >{data.patronymics}</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td >Дата Рождения</Td>
-                                    <Td >{data.birthday}</Td>
-                                </Tr>
-                                <Tr>
-                                    <Td >Дата Рождения</Td>
-                                    <Td >{count_ratting()}</Td>
-                                </Tr>
 
 
-                            </Tbody>
-                        </Table>
-                    </Row>
-
-                    <Row>
-                        <Table>
-                            <Thead>
-                                <Tr>
-                                    <Th>Дата</Th>
-                                    <Th>Коммментарий</Th>
-                                    <Th>Рейтинг</Th>
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                {
-                                    (data.comments) ? data.comments.map((item, i) => (
-
-                                        <Tr key={i}>
-                                            <Td >{item.createdAt}</Td>
-                                            <Td >{item.comment}</Td>
-                                            <Td >{item.ratting}</Td>
-                                        </Tr>
-
-                                    )) : null
-                                }
-                            </Tbody>
-                        </Table>
-                    </Row>
-                    <Row>
-
-                        <AddComment />
-                    </Row>
                 </Container>
-            </>
+            </Container>
         )
     }
 }

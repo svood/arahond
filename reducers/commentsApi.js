@@ -37,7 +37,8 @@ async function addComment(data) {
     const params = {
         'ratting':Number(data.ratting),
         'comment':data.comment,
-        'jobber_id':data.jobber_id
+        'jobber_id':data.jobber_id,
+        'insearch':data.inSearch,
     };
 
 

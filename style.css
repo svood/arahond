@@ -21,7 +21,9 @@ background: #2f2f71;
 }
 
 .addJoberInput {
-    margin-top:15px;
+
+    width: 80%;
+    margin: 13px auto;
 }
 .jobbersTable {
     margin: 15px;
@@ -57,3 +59,82 @@ background: #2f2f71;
     margin: 0 auto;
     border-bottom: 1px solid #dbdbdb;
 }
+
+/* //Comments UsersInfo */
+.commentsBlock {
+    background: #f8f8f8;
+    margin: 12px;
+    border: 1px solid #d7d7d7;
+    border-radius: 7px;
+    padding: 7px;
+}
+.commentUserInfo {
+    border-bottom: 1px solid #dadae8;
+    width: 99%;
+    margin: 0 auto;
+}
+.userCommentRaiting {
+    text-align: end;
+}
+.commentInfo{
+    text-transform: capitalize;
+    font-size: 1.2em;
+    width: 100%;
+    justify-content: center;
+    color: #525252;
+    font-weight: 400;
+}
+.userinfoTable {
+    margin: 0 auto;
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 2em
+}
+ .userinfoPhoto  {
+    width: 92%;
+    margin: 0 auto;
+    display: block;
+    max-width: 200px;
+ }
+ .userInfoMain {
+    background: aliceblue;
+    border: 1px solid #bebed3;
+    padding: 7px;
+ }
+ .userInfoTitle {
+    width: 100%;
+    background: aliceblue;
+    margin: 15px 0 15px 0;
+    padding: 8px;
+    font-size: 18px;
+    color: #2b2b2c;
+    font-weight: 700;
+ }
+ .userAddCommentTitle {
+    width: 100%;
+    margin: 15px 0 15px 0;
+    padding: 8px;
+    font-size: 18px;
+    color: #2b2b2c;
+    font-weight: 700;
+    border-bottom: 1px solid #2f2f71;
+    justify-content: center;
+ }
+ .userAddCommentRaiting {
+    justify-content: center;
+ }
+
+ .addNewComment{
+    margin-top: 11px;
+   
+    padding: 14px;
+    background: #f8f8f8;
+ }
+ .addCommentButton {
+    justify-content: center;
+ }
+ .commentInSearch {
+    margin: 11px 0 11px 0;
+     justify-content: center;
+ }
